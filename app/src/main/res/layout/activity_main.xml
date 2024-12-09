@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mediumPurple" />
+
+    <EditText
+        android:id="@+id/inputET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:hint="@string/input"
+        android:textSize="30sp"
+        android:layout_margin="15dp" />
+
+    <TextView
+        android:id="@+id/resultTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:hint="result"
+        android:textSize="30sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
+    <GridLayout
+        android:id="@+id/keyboardGL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:columnCount="4"
+        android:rowCount="7">
+
+        <Button
+            android:id="@+id/divBTN"
+            android:layout_column="3"
+            android:text="/" />
+
+        <Button
+            android:id="@+id/oneBTN"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/twoBTN"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/threeBTN"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/multBTN"
+            android:text="*" />
+
+        <Button
+            android:id="@+id/fourBTN"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/fiveBTN"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/sixBTN"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/difBTN"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/sevenBTN"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/eightBTN"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/nineBTN"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/sumBTN"
+            android:text="+"
+            android:layout_rowSpan="3"
+            android:layout_height="150dp"/>
+
+        <Button
+            android:id="@+id/zeroBTN"
+            android:text="0"
+            android:layout_columnSpan="3"
+            android:layout_width="176dp"/>
+
+        <Button
+            android:id="@+id/equalsBTN"
+            android:text="="
+            android:layout_columnSpan="3"
+            android:layout_width="264dp"/>
+        <Button
+            android:id="@+id/resetBTN"
+            android:text="reset"
+            android:layout_columnSpan="4"
+            android:layout_width="354dp"/>
+
+    </GridLayout>
+
+</LinearLayout>
