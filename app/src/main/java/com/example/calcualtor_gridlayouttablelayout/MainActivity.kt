@@ -1,5 +1,6 @@
 package com.example.calcualtor_gridlayouttablelayout
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var divBTN: Button
     private lateinit var multBTN: Button
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -143,26 +145,23 @@ class MainActivity : AppCompatActivity() {
         val operators = mutableListOf<Char>()
         val currentNumber = StringBuilder()
 
-        // Обработка всех символов в строке
         for (char in expression) {
             when {
-                char.isDigit() || char == '.' -> currentNumber.append(char) // Собираем число
+                char.isDigit() || char == '.' -> currentNumber.append(char)
                 char in "+-*/" -> {
                     if (currentNumber.isNotEmpty()) {
-                        operands.add(currentNumber.toString().toDouble()) // Добавляем число в список операндов
+                        operands.add(currentNumber.toString().toDouble())
                         currentNumber.clear()
                     }
-                    operators.add(char) // Добавляем оператора в список
+                    operators.add(char)
                 }
             }
         }
 
-        // Добавляем последнее число
         if (currentNumber.isNotEmpty()) {
             operands.add(currentNumber.toString().toDouble())
         }
 
-        // Сначала выполняем умножение и деление
         var index = 0
         while (index < operators.size) {
             when (operators[index]) {
@@ -170,20 +169,19 @@ class MainActivity : AppCompatActivity() {
                     operands[index] = operands[index] * operands[index + 1]
                     operands.removeAt(index + 1)
                     operators.removeAt(index)
-                    index-- // Возвращаемся назад, чтобы проверить текущий оператор еще раз
+                    index--
                 }
                 '/' -> {
                     if (operands[index + 1] == 0.0) throw ArithmeticException("Деление на ноль")
                     operands[index] = operands[index] / operands[index + 1]
                     operands.removeAt(index + 1)
                     operators.removeAt(index)
-                    index-- // Возвращаемся назад, чтобы проверить текущий оператор еще раз
+                    index--
                 }
             }
             index++
         }
 
-        // Теперь выполняем сложение и вычитание
         index = 0
         while (index < operators.size) {
             when (operators[index]) {
@@ -191,13 +189,13 @@ class MainActivity : AppCompatActivity() {
                     operands[index] = operands[index] + operands[index + 1]
                     operands.removeAt(index + 1)
                     operators.removeAt(index)
-                    index-- // Возвращаемся назад, чтобы проверить текущий оператор еще раз
+                    index--
                 }
                 '-' -> {
                     operands[index] = operands[index] - operands[index + 1]
                     operands.removeAt(index + 1)
                     operators.removeAt(index)
-                    index-- // Возвращаемся назад, чтобы проверить текущий оператор еще раз
+                    index--
                 }
             }
             index++
